@@ -74,7 +74,6 @@
             transform-style: preserve-3d;
         }
 
-        /* --- СТИЛИ ДЛЯ ЛОГОТИПА ИЗ КОДА --- */
         .logo-container {
             display: flex;
             flex-direction: column;
@@ -128,7 +127,6 @@
             background-color: var(--secondary-brown); margin: 0 10px;
         }
 
-        /* --- СТИЛИ АКЦИИ --- */
         .promo-banner {
             background: linear-gradient(135deg, #a66538, #8C532E);
             color: white; padding: 12px; border-radius: 16px; margin-bottom: 15px;
@@ -142,15 +140,35 @@
         .promo-text strong { font-size: 0.9rem; }
         @keyframes pulse { 0% { transform: translateZ(20px) scale(1); } 50% { transform: translateZ(20px) scale(1.02); } 100% { transform: translateZ(20px) scale(1); } }
 
-        /* --- УСЛУГИ И ЦЕНЫ --- */
+        /* --- СТИЛИ ЗАГОЛОВКОВ --- */
         .section-title {
             font-size: 1.15rem;
             text-align: center;
             font-weight: 800;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
             background: linear-gradient(45deg, var(--primary-green), var(--secondary-brown));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            transform: translateZ(20px);
+        }
+
+        /* Линия между заголовками */
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 80%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--secondary-brown), transparent);
+            margin: 10px auto 0;
+            opacity: 0.5;
+        }
+
+        .services-section h3 {
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--primary-green);
+            margin-bottom: 15px;
+            letter-spacing: 1px;
             transform: translateZ(20px);
         }
 
@@ -286,8 +304,6 @@
 
         <div class="services-section">
             <h2 class="section-title"> Պրոֆեսիոնալ մոտեցում յուրաքանչյուր դռանը</h2>
-            <p>____________________________________________________________________</p>
-            <p></p>
             <h3> ԾԱՌԱՅՈՒԹՅՈՒՆՆԵՐ </h3>
             <div class="service-list">
                 <div class="service-item"><span class="service-name">Չափագրում</span><span class="service-price price-free">Անվճար</span></div>
@@ -311,7 +327,6 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            // Логика отображения скидки
             const now = new Date();
             const start = new Date(now.getFullYear(), now.getMonth(), 15);
             const end = new Date(now.getFullYear(), now.getMonth() + 1, 15);
