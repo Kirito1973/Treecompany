@@ -3,9 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TREE COMPANY - Դռների տեղադրում
-    </title>
-    <!-- Подключение шрифтов -->
+    <title>TREE COMPANY - Դռների տեղադրում</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Armenian:wght@400;600;800&family=Montserrat:wght@500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -130,6 +128,20 @@
             background-color: var(--secondary-brown); margin: 0 10px;
         }
 
+        /* --- СТИЛИ АКЦИИ --- */
+        .promo-banner {
+            background: linear-gradient(135deg, #a66538, #8C532E);
+            color: white; padding: 12px; border-radius: 16px; margin-bottom: 15px;
+            box-shadow: 0 10px 20px rgba(140, 83, 46, 0.3);
+            animation: pulse 2s infinite; text-align: center;
+            transform: translateZ(20px);
+        }
+        .promo-content { display: flex; align-items: center; justify-content: center; gap: 10px; }
+        .promo-text { display: flex; flex-direction: column; }
+        .promo-text span { font-size: 0.65rem; letter-spacing: 2px; opacity: 0.9; }
+        .promo-text strong { font-size: 0.9rem; }
+        @keyframes pulse { 0% { transform: translateZ(20px) scale(1); } 50% { transform: translateZ(20px) scale(1.02); } 100% { transform: translateZ(20px) scale(1); } }
+
         /* --- УСЛУГИ И ЦЕНЫ --- */
         .section-title {
             font-size: 1.15rem;
@@ -181,7 +193,6 @@
             border: 1px solid rgba(140,83,46,0.1);
         }
 
-        /* Выделение для слова "Անվճար" (Бесплатно) */
         .price-free {
             color: #1cb651;
             background: linear-gradient(135deg, rgba(28, 182, 81, 0.15), rgba(28, 182, 81, 0.05));
@@ -199,7 +210,6 @@
             transform: translateZ(15px);
         }
 
-        /* --- КНОПКИ --- */
         .contacts-section {
             display: grid; grid-template-columns: 1fr; gap: 8px;
             transform: translateZ(25px);
@@ -239,28 +249,16 @@
         
         <div class="header">
             <div class="logo-container" id="logoWrap">
-                <!-- Отрисованный кодом логотип -->
                 <svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg" class="svg-logo">
-                    <!-- Пол, рама двери -->
                     <path d="M 10 140 L 190 140" fill="none" stroke="#143622" stroke-width="3"/>
                     <polyline points="100,140 160,140 160,20 100,20" fill="none" stroke="#143622" stroke-width="10" stroke-linecap="square"/>
-                    
-                    <!-- Изгиб ствола дерева -->
                     <path d="M 20 140 C 60 140 85 120 94 70 C 98 45 100 30 100 20" fill="none" stroke="#143622" stroke-width="11" stroke-linecap="square"/>
-                    
-                    <!-- Внутренность комнаты -->
                     <rect x="105" y="25" width="50" height="110" fill="#111" />
-                    <!-- Открытая деревянная дверь -->
                     <polygon points="105,25 140,35 140,130 105,135" fill="var(--door-brown)" stroke="#6e4224" stroke-width="1"/>
-                    <!-- Ручка двери -->
                     <rect x="132" y="75" width="3" height="12" fill="#111" rx="1"/>
-
-                    <!-- Ветви -->
                     <path d="M 88 95 C 60 85 40 60 40 60" fill="none" stroke="#143622" stroke-width="5" stroke-linecap="round"/>
                     <path d="M 94 70 C 70 50 55 25 55 25" fill="none" stroke="#143622" stroke-width="4" stroke-linecap="round"/>
                     <path d="M 75 88 C 50 85 30 95 30 95" fill="none" stroke="#143622" stroke-width="3" stroke-linecap="round"/>
-
-                    <!-- Листья -->
                     <g fill="var(--bright-glow)">
                         <path class="svg-leaf" d="M 40 60 C 25 55 30 40 45 45 C 50 55 40 60 40 60 Z"/>
                         <path class="svg-leaf" d="M 55 25 C 40 15 50 0 60 10 C 65 20 55 25 55 25 Z"/>
@@ -271,100 +269,72 @@
                         <path class="svg-leaf" d="M 50 105 C 35 100 40 85 55 90 C 60 100 50 105 50 105 Z"/>
                     </g>
                 </svg>
-
                 <h1 class="brand-name">TREE</h1>
                 <p class="brand-sub">C O M P A N Y</p>
+            </div>
+        </div>
+
+        <div id="promoBanner" class="promo-banner" style="display: none;">
+            <div class="promo-content">
+                <i class="fas fa-percentage"></i>
+                <div class="promo-text">
+                    <span>ՄԵՐ ԱԿՑԻԱՆ</span>
+                    <strong>-10% ԶԵՂՉ ԲՈԼՈՐ ԾԱՌԱՅՈՒԹՅՈՒՆՆԵՐԻՆ Մինչև 25.07.2026թ</strong>
+                </div>
             </div>
         </div>
 
         <div class="services-section">
             <h2 class="section-title">Ծառայություններ և Գներ</h2>
             <h4>Պրոֆեսիոնալ մոտեցում յուրաքանչյուր դռանը</h4>
-            
-            <!-- Полный список услуг -->
             <div class="service-list">
-                <div class="service-item">
-                    <span class="service-name">Չափագրում</span>
-                    <span class="service-price price-free">Անվճար</span>
-                </div>
-                <div class="service-item">
-                    <span class="service-name">Միջսենյակային դռների տեղադրում</span>
-                    <span class="service-price">սկսած 13,000 ֏</span>
-                </div>
-                <div class="service-item">
-                    <span class="service-name">Ապամոնտաժում</span>
-                    <span class="service-price">սկսած 3,500 ֏</span>
-                </div>
-                <div class="service-item">
-                    <span class="service-name">Պետլիների փորում (1 հատը)</span>
-                    <span class="service-price">2,000 ֏</span>
-                </div>
-                <div class="service-item">
-                    <span class="service-name">Փականի փորում</span>
-                    <span class="service-price">5,000 ֏</span>
-                </div>
-                <div class="service-item">
-                    <span class="service-name">Երեսկալի և ավելացուցիչի տեղադրում</span>
-                    <span class="service-price">7,500֏</span>
-                </div>
-                <div class="service-item">
-                    <span class="service-name">Ջրից և խոնավությունից պաշտպանող նյութերով մշակում</span>
-                    <span class="service-price">սկսած 6,000 ֏</span>
-                </div>
+                <div class="service-item"><span class="service-name">Չափագրում</span><span class="service-price price-free">Անվճար</span></div>
+                <div class="service-item"><span class="service-name">Միջսենյակային դռների տեղադրում</span><span class="service-price">սկսած 13,000 ֏</span></div>
+                <div class="service-item"><span class="service-name">Ապամոնտաժում</span><span class="service-price">սկսած 3,500 ֏</span></div>
+                <div class="service-item"><span class="service-name">Պետլիների փորում (1 հատը)</span><span class="service-price">2,000 ֏</span></div>
+                <div class="service-item"><span class="service-name">Փականի փորում</span><span class="service-price">5,000 ֏</span></div>
+                <div class="service-item"><span class="service-name">Երեսկալի և ավելացուցիչի տեղադրում</span><span class="service-price">7,500֏</span></div>
+                <div class="service-item"><span class="service-name">Ջրից և խոնավությունից պաշտպանող նյութերով մշակում</span><span class="service-price">սկսած 6,000 ֏</span></div>
             </div>
-           
-            <!-- Примечание о деталях -->
             <p class="info-note">* Մանրամասների համար զանգահարել նշված համարով</p>
         </div>
 
         <div class="contacts-section">
-            <!-- Исправленная ссылка на ЗВОНОК -->
-            <a href="tel:+37455188038" class="btn btn-phone">
-                <i class="fas fa-phone-alt"></i> <span>Զանգահարել</span>
-            </a>
-            
-            <a href="https://wa.me/37455188038" class="btn btn-whatsapp" target="_blank">
-                <i class="fab fa-whatsapp"></i> <span>WhatsApp</span>
-            </a>
-            
-            <!-- Исправленная ссылка на VIBER -->
-            <a href="viber://add?number=37455188038" class="btn btn-viber">
-                <i class="fab fa-viber"></i> <span>Viber</span>
-            </a>
-            
-            <a href="https://www.list.am/item/23800375" class="btn btn-listam" target="_blank">
-                <i class="fas fa-external-link-alt"></i> <span>List.am</span>
-            </a>
+            <a href="tel:+37455188038" class="btn btn-phone"><i class="fas fa-phone-alt"></i> <span>Զանգահարել</span></a>
+            <a href="https://wa.me/37455188038" class="btn btn-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> <span>WhatsApp</span></a>
+            <a href="viber://add?number=37455188038" class="btn btn-viber"><i class="fab fa-viber"></i> <span>Viber</span></a>
+            <a href="https://www.list.am/item/23800375" class="btn btn-listam" target="_blank"><i class="fas fa-external-link-alt"></i> <span>List.am</span></a>
         </div>
     </div>
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
+            // Логика отображения скидки
+            const now = new Date();
+            const start = new Date(now.getFullYear(), now.getMonth(), 15);
+            const end = new Date(now.getFullYear(), now.getMonth() + 1, 15);
+            if (now >= start && now <= end) {
+                document.getElementById('promoBanner').style.display = 'block';
+            }
+
             const card = document.getElementById("businessCard");
             const shine = card.querySelector(".shine");
             const logoWrap = document.getElementById("logoWrap");
             const items = document.querySelectorAll('.service-item');
 
-            // Появление списка услуг
             items.forEach((item, index) => {
                 setTimeout(() => item.classList.add('item-appear'), 300 + index * 90);
             });
 
-            // 3D Эффект при касании экрана
             function processMove(clientX, clientY) {
                 const rect = card.getBoundingClientRect();
                 const x = clientX - rect.left;
                 const y = clientY - rect.top;
                 const px = x / rect.width, py = y / rect.height;
-                
                 const rotX = ((py * 20) - 10 * -1).toFixed(2);
                 const rotY = ((px * 20) - 10).toFixed(2);
-                
                 card.style.transform = `perspective(1000px) rotateX(${-rotX}deg) rotateY(${rotY}deg) scale(1.02)`;
-                
-                // Легкое смещение логотипа для объема
                 logoWrap.style.transform = `translateZ(35px) translateX(${(px*10)-5}px) translateY(${(py*10)-5}px)`;
-
                 shine.style.opacity = "1";
                 shine.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(255,255,255,0.4) 0%, transparent 60%)`;
             }
