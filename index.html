@@ -372,28 +372,25 @@
         });
     </script>
 
-    <!-- ================= НАЧАЛО БЛОКА МУЛЬТИЯЗЫЧНОСТИ ================= -->
     <style>
-        /* Стили для переключателя языков (в стиле твоей карточки) */
+        /* Стили для переключателя языков (Глубокий цвет) */
         .lang-switcher {
             position: fixed;
             top: 20px;
             right: 20px;
             z-index: 9999;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: var(--primary-green); /* Глубокий зеленый фон */
+            border: 2px solid rgba(255, 255, 255, 0.3); /* Белая обводка для контраста */
             border-radius: 25px;
             padding: 5px;
             display: flex;
             gap: 5px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
         }
         .lang-switcher button {
             background: transparent;
             border: none;
-            color: rgba(255, 255, 255, 0.8);
+            color: rgba(255, 255, 255, 0.6); /* Полупрозрачный текст для неактивных */
             font-family: 'Montserrat', sans-serif;
             font-weight: 700;
             font-size: 0.8rem;
@@ -402,10 +399,13 @@
             cursor: pointer;
             transition: all 0.3s ease;
         }
-        .lang-switcher button.active {
-            background: var(--primary-green);
+        .lang-switcher button:hover {
             color: white;
-            box-shadow: 0 4px 10px rgba(20, 54, 34, 0.4);
+        }
+        .lang-switcher button.active {
+            background: var(--secondary-brown); /* Глубокий коричневый для активной кнопки */
+            color: white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
         }
     </style>
 
@@ -496,6 +496,5 @@
             document.querySelector('.btn-text-phone').textContent = t.btnPhone;
         }
     </script>
-    <!-- ================= КОНЕЦ БЛОКА МУЛЬТИЯЗЫЧНОСТИ ================= -->
-</body>
+    </body>
 </html>
