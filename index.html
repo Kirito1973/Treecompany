@@ -68,6 +68,38 @@
             z-index: 10; transition: opacity 0.15s ease;
         }
 
+        /* --- ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКОВ --- */
+        .lang-switcher {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            display: flex;
+            gap: 2px;
+            background: rgba(20, 54, 34, 0.08);
+            padding: 4px;
+            border-radius: 20px;
+            z-index: 20;
+            transform: translateZ(30px);
+        }
+
+        .lang-btn {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: var(--text-light);
+            cursor: pointer;
+            padding: 4px 8px;
+            border-radius: 15px;
+            transition: all 0.2s ease;
+            user-select: none;
+        }
+
+        .lang-btn.active {
+            background: var(--primary-green);
+            color: white;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+
         .header {
             text-align: center;
             margin-bottom: 20px;
@@ -234,7 +266,7 @@
         .btn-viber { background: linear-gradient(135deg, #7360f2, #5a47de); }
         .btn-tiktok { background: #000; border: 1px solid rgba(255, 255, 255, 0.1); }
         
-        /* Стили для List.am (Добавлен flex-direction column) */
+        /* Стили для List.am */
         .btn-listam {
             background: #0084ff;
             flex-direction: column;
@@ -261,6 +293,12 @@
 
     <div class="card" id="businessCard">
         <div class="shine"></div>
+        
+        <div class="lang-switcher">
+            <span class="lang-btn active" data-lang="hy">ՀԱՅ</span>
+            <span class="lang-btn" data-lang="ru">РУС</span>
+            <span class="lang-btn" data-lang="en">ENG</span>
+        </div>
         
         <div class="header">
             <div class="logo-container" id="logoWrap">
@@ -313,7 +351,7 @@
                 <div class="service-item"><span class="service-name">Երեսկալի և ավելացուցիչի տեղադրում</span><span class="service-price">7,500֏</span></div>
                 <div class="service-item"><span class="service-name">Ջրից և խոնավությունից պաշտպանող նյութերով մշակում</span><span class="service-price">սկսած 6,000 ֏</span></div>
             </div>
-            <p class="info-note">* Կապ հաստատեք մեր հետ ձեզ համար տարբերակով</p>
+            <p class="info-note">* Մանրամասների համար զանգահարել նշված համարով</p>
         </div>
 
         <div class="contacts-section">
@@ -321,7 +359,6 @@
             <a href="https://wa.me/37455188038" class="btn btn-whatsapp" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
             <a href="viber://add?number=37455188038" class="btn btn-viber" title="Viber"><i class="fab fa-viber"></i></a>
             
-            <!-- ОБНОВЛЕННАЯ КНОПКА С ТЕКСТОМ ВНИЗУ -->
             <a href="https://www.list.am/item/23800375" class="btn btn-listam" target="_blank" title="List.am">
                 <svg viewBox="0 0 40 40" width="18" height="18" fill="none" stroke="white" stroke-width="4.5" stroke-linejoin="round">
                     <path d="M 16 16 C 16 2, 24 2, 24 16 C 38 16, 38 24, 24 24 C 24 38, 16 38, 16 24 C 2 24, 2 16, 16 16 Z" />
@@ -336,6 +373,17 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
+            // Логика переключения визуального состояния кнопок языков
+            const langBtns = document.querySelectorAll('.lang-btn');
+            langBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation(); // Останавливаем всплытие события, чтобы карточка не дергалась
+                    langBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    // Здесь можно добавить логику смены текста в будущем
+                });
+            });
+
             // Логика отображения скидки
             const now = new Date();
             const start = new Date(now.getFullYear(), now.getMonth(), 15);
