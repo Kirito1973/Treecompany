@@ -208,6 +208,17 @@
             transform: scale(1.02) !important;
         }
 
+        /* --- СТИЛЬ ДЛЯ ТЕКСТА О ПЛИНТУСАХ --- */
+        .service-subheading {
+            font-size: 0.75rem;
+            text-align: center;
+            font-weight: 700;
+            color: var(--secondary-brown);
+            margin: 6px 0 2px 0;
+            opacity: 0; 
+            transform: translateX(-20px);
+        }
+
         .service-name { 
             font-size: 0.8rem; 
             font-weight: 600; 
@@ -338,7 +349,7 @@
         </div>
 
         <div class="services-section">
-            <h2 class="section-title"> Պրոֆեսիոնալ մոտեցում յուրաքանչյուր աշխատանքին</h2>
+            <h2 class="section-title"> Պրոֆեսիոնալ մոտեցում յուրաքանչյուր աշխատանքին </h2>
             <h3> ԾԱՌԱՅՈՒԹՅՈՒՆՆԵՐ </h3>
             <div class="service-list">
                 <div class="service-item"><span class="service-name">Չափագրում</span><span class="service-price price-free">Անվճար</span></div>
@@ -348,6 +359,10 @@
                 <div class="service-item"><span class="service-name">Փականի փորում</span><span class="service-price">5,000 ֏</span></div>
                 <div class="service-item"><span class="service-name">Երեսկալի և ավելացուցիչի տեղադրում</span><span class="service-price">7,500֏</span></div>
                 <div class="service-item"><span class="service-name">Ջրից և խոնավությունից պաշտպանող նյութերով մշակում</span><span class="service-price">սկսած 6,000 ֏</span></div>
+                
+                <div class="service-subheading">Իրականացնում ենք նաև պլինթուսների տեղադրում և ապամոնտաժում</div>
+                <div class="service-item"><span class="service-name">Պլինթուսի տեղադրում (1 գծ.մ.)</span><span class="service-price">սկսած 1,500 ֏</span></div>
+                <div class="service-item"><span class="service-name">Պլինթուսի ապամոնտաժում (1 գծ.մ.)</span><span class="service-price">300 ֏</span></div>
             </div>
             <p class="info-note">* Մանրամասների համար կարող եք կապ հաստատել մեզ հետ ձեզ համար տարբերակով</p>
         </div>
@@ -393,7 +408,9 @@
             const card = document.getElementById("businessCard");
             const shine = card.querySelector(".shine");
             const logoWrap = document.getElementById("logoWrap");
-            const items = document.querySelectorAll('.service-item');
+            
+            // Захватываем и пункты меню, и подзаголовок, чтобы они появлялись по очереди
+            const items = document.querySelectorAll('.service-item, .service-subheading');
 
             items.forEach((item, index) => {
                 setTimeout(() => item.classList.add('item-appear'), 300 + index * 90);
