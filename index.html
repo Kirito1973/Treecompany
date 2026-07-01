@@ -436,7 +436,6 @@
             <a href="https://www.tiktok.com/@tree__company" class="btn btn-tiktok" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
         </div>
 
-        <!-- КНОПКА ОФОРМИТЬ ЗАКАЗ -->
         <div class="order-section">
             <a href="#" class="btn-order" onclick="return false;">
                 <span data-i18n="order_btn">Պատվիրել</span>
@@ -519,17 +518,13 @@
                 btn.addEventListener('click', (e) => {
                     e.stopPropagation(); 
                     
-                    // Меняем активную кнопку
                     langBtns.forEach(b => b.classList.remove('active'));
                     btn.classList.add('active');
                     
-                    // Получаем выбранный язык (hy, ru, en)
                     const lang = btn.dataset.lang;
                     
-                    // Меняем заголовок страницы (title)
                     document.title = translations[lang].title;
                     
-                    // Обновляем текст во всех элементах с атрибутом data-i18n
                     i18nElements.forEach(el => {
                         const key = el.getAttribute('data-i18n');
                         if (translations[lang][key]) {
@@ -539,12 +534,15 @@
                 });
             });
 
-            // Логика отображения скидки
+            // Логика отображения скидки (отредактировано: до 25.07.2026 включительно)
             const now = new Date();
-            const start = new Date(now.getFullYear(), now.getMonth(), 15);
-            const end = new Date(now.getFullYear(), now.getMonth() + 1, 15);
-            if (now >= start && now <= end) {
+            // Месяцы в JS начинаются с 0 (0 = Январь, 6 = Июль)
+            const promoEndDate = new Date(2026, 6, 26); 
+            
+            if (now < promoEndDate) {
                 document.getElementById('promoBanner').style.display = 'block';
+            } else {
+                document.getElementById('promoBanner').style.display = 'none';
             }
 
             const card = document.getElementById("businessCard");
