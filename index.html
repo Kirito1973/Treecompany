@@ -258,6 +258,7 @@
             justify-content: center;
             align-items: center;
             gap: 12px;
+            margin-bottom: 20px;
             transform: translateZ(25px);
         }
 
@@ -287,6 +288,61 @@
             font-weight: 700;
             margin-top: 1px;
             letter-spacing: 0.3px;
+        }
+
+        /* --- КНОПКА ЗАКАЗА --- */
+        .order-section {
+            display: flex;
+            justify-content: center;
+            transform: translateZ(30px);
+            opacity: 0;
+            animation: slideInFX 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
+            animation-delay: 1.2s;
+        }
+
+        .btn-order {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(45deg, var(--primary-green), #2a5f3f);
+            color: white;
+            text-decoration: none;
+            padding: 14px 40px;
+            border-radius: 25px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 0.95rem;
+            box-shadow: 0 8px 20px rgba(20, 54, 34, 0.3);
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .btn-order:active {
+            transform: scale(0.95);
+            box-shadow: 0 4px 10px rgba(20, 54, 34, 0.3);
+        }
+
+        .badge-soon {
+            position: absolute;
+            top: -10px;
+            right: -15px;
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            font-size: 0.65rem;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-weight: 800;
+            text-transform: uppercase;
+            box-shadow: 0 3px 8px rgba(231, 76, 60, 0.4);
+            animation: pulse-badge 2s infinite;
+            letter-spacing: 1px;
+        }
+
+        @keyframes pulse-badge {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
         }
 
         .item-appear {
@@ -359,7 +415,7 @@
                 <div class="service-item"><span class="service-name" data-i18n="s7_name">Ջրից և խոնավությունից պաշտպանող նյութերով մշակում</span><span class="service-price" data-i18n="s7_price">սկսած 6,000 ֏</span></div>
                 
                 <div class="service-subheading" data-i18n="subheading">Իրականացնում ենք նաև պլինթուսների տեղադրում և ապամոնտաժում</div>
-                <div class="service-item"><span class="service-name" data-i18n="s8_name">Պլինթուսի տեղադրում (1 գծ.մ.)</span><span class="service-price" data-i18n="s8_price">1000-2000 ֏</span></div>
+                <div class="service-item"><span class="service-name" data-i18n="s8_name">Պլինթուսի տեղադրում (1 գծ.մ.)</span><span class="service-price" data-i18n="s8_price">1,000 - 2,000 ֏</span></div>
                 <div class="service-item"><span class="service-name" data-i18n="s9_name">Պլինթուսի ապամոնտաժում (1 գծ.մ.)</span><span class="service-price" data-i18n="s9_price">300 ֏</span></div>
             </div>
             <p class="info-note" data-i18n="info_note">* Մանրամասների համար կարող եք կապ հաստատել մեզ հետ ձեզ համար հարմար տարբերակով</p>
@@ -380,6 +436,14 @@
             <a href="https://www.tiktok.com/@tree__company" class="btn btn-tiktok" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
         </div>
 
+        <!-- КНОПКА ОФОРМИТЬ ЗАКАЗ -->
+        <div class="order-section">
+            <a href="#" class="btn-order" onclick="return false;">
+                <span data-i18n="order_btn">Պատվիրել</span>
+                <span class="badge-soon" data-i18n="order_soon">Շուտով</span>
+            </a>
+        </div>
+
     </div>
 
     <script>
@@ -398,9 +462,11 @@
                 s6_name: "Երեսկալի և ավելացուցիչի տեղադրում", s6_price: "7,500 ֏",
                 s7_name: "Ջրից և խոնավությունից պաշտպանող նյութերով մշակում", s7_price: "սկսած 6,000 ֏",
                 subheading: "Իրականացնում ենք նաև պլինթուսների տեղադրում և ապամոնտաժում",
-                s8_name: "Պլինթուսի տեղադրում (1 գծ.մ.)", s8_price: "սկսած 1,500 ֏",
+                s8_name: "Պլինթուսի տեղադրում (1 գծ.մ.)", s8_price: "1,000 - 2,000 ֏",
                 s9_name: "Պլինթուսի ապամոնտաժում (1 գծ.մ.)", s9_price: "300 ֏",
-                info_note: "* Մանրամասների համար կարող եք կապ հաստատել մեզ հետ ձեզ համար հարմար տարբերակով"
+                info_note: "* Մանրամասների համար կարող եք կապ հաստատել մեզ հետ ձեզ համար հարմար տարբերակով",
+                order_btn: "Պատվիրել",
+                order_soon: "Շուտով"
             },
             ru: {
                 title: "TREE COMPANY - Установка дверей",
@@ -416,9 +482,11 @@
                 s6_name: "Установка наличников и доборов", s6_price: "7,500 ֏",
                 s7_name: "Обработка влагозащитными материалами", s7_price: "от 6,000 ֏",
                 subheading: "Также осуществляем установку и демонтаж плинтусов",
-                s8_name: "Установка плинтуса (1 пог.м.)", s8_price: "от 1,500 ֏",
+                s8_name: "Установка плинтуса (1 пог.м.)", s8_price: "от 1,000 до 2,000 ֏",
                 s9_name: "Демонтаж плинтуса (1 пог.м.)", s9_price: "300 ֏",
-                info_note: "* Для подробностей можете связаться с нами удобным для вас способом"
+                info_note: "* Для подробностей можете связаться с нами удобным для вас способом",
+                order_btn: "Оформить заказ",
+                order_soon: "Скоро"
             },
             en: {
                 title: "TREE COMPANY - Door Installation",
@@ -434,9 +502,11 @@
                 s6_name: "Casing and extension installation", s6_price: "7,500 ֏",
                 s7_name: "Waterproofing treatment", s7_price: "from 6,000 ֏",
                 subheading: "We also install and dismantle skirting boards",
-                s8_name: "Skirting board installation (1 lm)", s8_price: "from 1,500 ֏",
+                s8_name: "Skirting board installation (1 lm)", s8_price: "1,000 - 2,000 ֏",
                 s9_name: "Skirting board dismantling (1 lm)", s9_price: "300 ֏",
-                info_note: "* For details, you can contact us in a way convenient for you"
+                info_note: "* For details, you can contact us in a way convenient for you",
+                order_btn: "Place Order",
+                order_soon: "Soon"
             }
         };
 
