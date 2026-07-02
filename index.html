@@ -2,20 +2,58 @@
 <html lang="hy">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#0d2215" id="themeColorMeta">
+    
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;charset=UTF-8,%3Csvg viewBox='0 0 200 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 10 140 L 190 140' fill='none' stroke='%23143622' stroke-width='3'/%3E%3Cpolyline points='100,140 160,140 160,20 100,20' fill='none' stroke='%23143622' stroke-width='10' stroke-linecap='square'/%3E%3Cpath d='M 20 140 C 60 140 85 120 94 70 C 98 45 100 30 100 20' fill='none' stroke='%23143622' stroke-width='11' stroke-linecap='square'/%3E%3Crect x='105' y='25' width='50' height='110' fill='%23111' /%3E%3Cpolygon points='105,25 140,35 140,130 105,135' fill='%23a66538' stroke='%236e4224' stroke-width='1'/%3E%3Crect x='132' y='75' width='3' height='12' fill='%23111' rx='1'/%3E%3Cpath d='M 88 95 C 60 85 40 60 40 60' fill='none' stroke='%23143622' stroke-width='5' stroke-linecap='round'/%3E%3Cpath d='M 94 70 C 70 50 55 25 55 25' fill='none' stroke='%23143622' stroke-width='4' stroke-linecap='round'/%3E%3Cpath d='M 75 88 C 50 85 30 95 30 95' fill='none' stroke='%23143622' stroke-width='3' stroke-linecap='round'/%3E%3Cg fill='%232eb85c'%3E%3Cpath d='M 40 60 C 25 55 30 40 45 45 C 50 55 40 60 40 60 Z'/%3E%3Cpath d='M 55 25 C 40 15 50 0 60 10 C 65 20 55 25 55 25 Z'/%3E%3Cpath d='M 70 45 C 55 35 65 20 75 30 C 80 40 70 45 70 45 Z'/%3E%3Cpath d='M 60 75 C 45 70 50 55 65 60 C 70 70 60 75 60 75 Z'/%3E%3Cpath d='M 85 30 C 75 20 85 10 95 15 C 95 25 85 30 85 30 Z'/%3E%3Cpath d='M 30 95 C 15 90 20 75 35 80 C 40 90 30 95 30 95 Z'/%3E%3Cpath d='M 50 105 C 35 100 40 85 55 90 C 60 100 50 105 50 105 Z'/%3E%3C/g%3E%3C/svg%3E">
+
     <title>TREE COMPANY - Դռների տեղադրում</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Armenian:wght@400;600;800&family=Montserrat:wght@500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         :root {
+            /* Базовые цвета */
             --primary-green: #143622;
             --bright-glow: #2eb85c;
             --secondary-brown: #8C532E;
             --door-brown: #a66538;
+            
+            /* Цвета светлой темы */
             --card-bg: rgba(255, 255, 255, 0.95);
             --text-dark: #142118;
             --text-light: #526358;
+            --service-bg: rgba(255, 255, 255, 0.7);
+            --service-border: rgba(26, 60, 40, 0.08);
+            --price-bg: linear-gradient(135deg, rgba(140,83,46,0.1), rgba(230,161,92,0.05));
+            --price-free-bg: linear-gradient(135deg, rgba(28, 182, 81, 0.15), rgba(28, 182, 81, 0.05));
+            --controls-bg: rgba(20, 54, 34, 0.08);
+            --order-btn-bg: linear-gradient(135deg, #143622, #2a5f3f);
+            
+            /* Цвета логотипа (чтобы менять в тёмной теме) */
+            --logo-stroke: #143622;
+            --logo-door-frame: #111;
+        }
+
+        /* Переменные тёмной темы */
+        body.dark-theme {
+            --card-bg: rgba(22, 34, 26, 0.92);
+            --text-dark: #e8f0eb;
+            --text-light: #9ab0a2;
+            --service-bg: rgba(35, 52, 42, 0.7);
+            --service-border: rgba(255, 255, 255, 0.05);
+            --primary-green: #2eb85c; 
+            --price-bg: linear-gradient(135deg, rgba(140,83,46,0.3), rgba(230,161,92,0.1));
+            --price-free-bg: linear-gradient(135deg, rgba(28, 182, 81, 0.25), rgba(28, 182, 81, 0.1));
+            --controls-bg: rgba(255, 255, 255, 0.1);
+            --order-btn-bg: linear-gradient(135deg, #1b3d27, #2eb85c);
+            
+            --logo-stroke: #5cc280;
+            --logo-door-frame: #3a4a40;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -31,6 +69,7 @@
             background: linear-gradient(135deg, #0d2215, #1b3d27, #593116, #224d32, #11291a);
             background-size: 300% 300%;
             animation: fluidBg 14s ease infinite;
+            transition: background 0.5s ease;
         }
 
         @keyframes fluidBg {
@@ -48,7 +87,7 @@
             box-shadow: 0 30px 70px rgba(0, 0, 0, 0.45);
             position: relative;
             overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
             transform-style: preserve-3d;
@@ -56,6 +95,7 @@
             opacity: 0;
             transform: scale(0.95) translateY(40px);
             animation: cardEntrance 0.8s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+            transition: background-color 0.4s ease, border-color 0.4s ease;
         }
 
         @keyframes cardEntrance {
@@ -68,34 +108,50 @@
             z-index: 10; transition: opacity 0.15s ease;
         }
 
-        /* --- ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКОВ --- */
-        .lang-switcher {
+        /* --- ПАНЕЛИ УПРАВЛЕНИЯ --- */
+        .controls-container {
             position: absolute;
             top: 15px;
-            right: 15px;
+            width: calc(100% - 30px);
             display: flex;
-            gap: 2px;
-            background: rgba(20, 54, 34, 0.08);
-            padding: 4px;
-            border-radius: 20px;
+            justify-content: space-between;
             z-index: 20;
             transform: translateZ(30px);
         }
 
-        .lang-btn {
+        .theme-switcher, .lang-switcher {
+            background: var(--controls-bg);
+            padding: 4px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            transition: background 0.3s ease;
+        }
+
+        .lang-switcher { gap: 2px; }
+
+        .theme-btn, .lang-btn {
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.65rem;
             font-weight: 700;
             color: var(--text-light);
             cursor: pointer;
-            padding: 4px 8px;
             border-radius: 15px;
             transition: all 0.2s ease;
             user-select: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .lang-btn.active {
-            background: var(--primary-green);
+        .lang-btn { font-size: 0.65rem; padding: 4px 8px; }
+        
+        .theme-btn {
+            width: 26px; height: 26px;
+            font-size: 0.9rem;
+        }
+
+        .lang-btn.active, .theme-btn.active {
+            background: #2eb85c;
             color: white;
             box-shadow: 0 2px 6px rgba(0,0,0,0.2);
         }
@@ -103,23 +159,24 @@
         .header {
             text-align: center;
             margin-bottom: 20px;
+            margin-top: 10px;
             transform-style: preserve-3d;
         }
 
-        /* --- СТИЛИ ДЛЯ ЛОГОТИПА ИЗ КОДА --- */
         .logo-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            transform: translateZ(35px);
-            margin-bottom: 10px;
+            display: flex; flex-direction: column; align-items: center;
+            transform: translateZ(35px); margin-bottom: 10px;
         }
 
         .svg-logo {
-            width: 120px;
-            height: 110px;
-            filter: drop-shadow(0 8px 15px rgba(20, 54, 34, 0.25));
+            width: 120px; height: 110px;
+            filter: drop-shadow(0 8px 15px rgba(0, 0, 0, 0.15));
         }
+
+        .svg-logo path:not([fill="none"]), 
+        .svg-logo polyline:not([fill="none"]) { transition: stroke 0.4s, fill 0.4s; }
+        .svg-logo [stroke="%23143622"], .svg-logo [stroke="#143622"] { stroke: var(--logo-stroke) !important; }
+        .svg-logo rect[fill="%23111"], .svg-logo rect[fill="#111"] { fill: var(--logo-door-frame) !important; }
 
         .svg-leaf {
             transform-origin: center;
@@ -133,26 +190,15 @@
         }
 
         .brand-name {
-            font-family: 'Times New Roman', Times, serif;
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--primary-green);
-            letter-spacing: 5px;
-            margin: -5px 0 0 0;
-            line-height: 1;
-            text-shadow: 2px 2px 5px rgba(0,0,0,0.15);
+            font-family: 'Times New Roman', Times, serif; font-size: 2.5rem; font-weight: 800;
+            color: var(--primary-green); letter-spacing: 5px; margin: -5px 0 0 0; line-height: 1;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.15); transition: color 0.4s;
         }
 
         .brand-sub {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.7rem;
-            font-weight: 700;
-            color: var(--secondary-brown);
-            letter-spacing: 6px;
-            margin-top: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            font-family: 'Montserrat', sans-serif; font-size: 0.7rem; font-weight: 700;
+            color: var(--secondary-brown); letter-spacing: 6px; margin-top: 8px;
+            display: flex; align-items: center; justify-content: center;
         }
 
         .brand-sub::before, .brand-sub::after {
@@ -160,7 +206,6 @@
             background-color: var(--secondary-brown); margin: 0 10px;
         }
 
-        /* --- СТИЛИ АКЦИИ --- */
         .promo-banner {
             background: linear-gradient(135deg, #a66538, #8C532E);
             color: white; padding: 12px; border-radius: 16px; margin-bottom: 15px;
@@ -174,92 +219,118 @@
         .promo-text strong { font-size: 0.9rem; }
         @keyframes pulse { 0% { transform: translateZ(20px) scale(1); } 50% { transform: translateZ(20px) scale(1.02); } 100% { transform: translateZ(20px) scale(1); } }
 
-        /* --- УСЛУГИ И ЦЕНЫ --- */
         .section-title {
-            font-size: 1.15rem;
-            text-align: center;
-            font-weight: 800;
-            margin-bottom: 12px;
+            font-size: 1.15rem; text-align: center; font-weight: 800; margin-bottom: 12px;
             background: linear-gradient(45deg, var(--primary-green), var(--secondary-brown));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            transform: translateZ(20px);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            transform: translateZ(20px); transition: all 0.4s;
+        }
+
+        .services-h3 {
+            text-align: center; margin-bottom: 10px; font-size: 0.9rem;
+            color: var(--text-dark); transition: color 0.4s;
         }
 
         .service-list {
             display: flex; flex-direction: column; gap: 6px;
-            transform: translateZ(15px);
-            margin-bottom: 15px;
+            transform: translateZ(15px); margin-bottom: 15px;
         }
 
         .service-item {
             display: flex; justify-content: space-between; align-items: center;
             padding: 10px 12px;
-            background: rgba(255, 255, 255, 0.7);
-            border: 1px solid rgba(26, 60, 40, 0.08);
-            border-radius: 12px;
-            opacity: 0; transform: translateX(-20px);
-            transition: all 0.25s ease;
+            background: var(--service-bg);
+            border: 1px solid var(--service-border);
+            border-radius: 12px; opacity: 0; transform: translateX(-20px);
+            transition: all 0.25s ease, background-color 0.4s, border-color 0.4s;
         }
 
         .service-item:active {
-            background: #ffffff;
             border-color: var(--bright-glow);
             transform: scale(1.02) !important;
         }
 
-        /* --- СТИЛЬ ДЛЯ ТЕКСТА О ПЛИНТУСАХ --- */
         .service-subheading {
-            font-size: 0.75rem;
-            text-align: center;
-            font-weight: 700;
-            color: var(--secondary-brown);
-            margin: 6px 0 2px 0;
-            opacity: 0; 
-            transform: translateX(-20px);
+            font-size: 0.75rem; text-align: center; font-weight: 700;
+            color: var(--secondary-brown); margin: 6px 0 2px 0;
+            opacity: 0; transform: translateX(-20px);
         }
 
         .service-name { 
-            font-size: 0.8rem; 
-            font-weight: 600; 
-            color: var(--text-dark); 
-            line-height: 1.3;
-            flex: 1;
-            padding-right: 8px;
+            font-size: 0.8rem; font-weight: 600; color: var(--text-dark); 
+            line-height: 1.3; flex: 1; padding-right: 8px; transition: color 0.4s;
         }
         
         .service-price {
             font-family: 'Montserrat', sans-serif; font-weight: 700;
             color: var(--secondary-brown); font-size: 0.85rem;
-            background: linear-gradient(135deg, rgba(140,83,46,0.1), rgba(230,161,92,0.05));
-            padding: 5px 8px; border-radius: 8px; white-space: nowrap;
-            border: 1px solid rgba(140,83,46,0.1);
+            background: var(--price-bg); padding: 5px 8px; border-radius: 8px; 
+            white-space: nowrap; transition: background 0.4s;
         }
 
         .price-free {
-            color: #1cb651;
-            background: linear-gradient(135deg, rgba(28, 182, 81, 0.15), rgba(28, 182, 81, 0.05));
-            border-color: rgba(28, 182, 81, 0.2);
-            text-transform: uppercase;
-            font-size: 0.8rem;
+            color: #1cb651; background: var(--price-free-bg);
+            text-transform: uppercase; font-size: 0.8rem;
         }
 
         .info-note {
-            text-align: center;
-            font-size: 0.75rem;
-            color: var(--text-light);
-            font-weight: 600;
-            margin-bottom: 15px;
-            transform: translateZ(15px);
+            text-align: center; font-size: 0.75rem; color: var(--text-light);
+            font-weight: 600; margin-bottom: 15px; transform: translateZ(15px);
+            transition: color 0.4s;
+        }
+
+        /* --- КНОПКА ЗАКАЗА С БЕЙДЖИКОМ --- */
+        .order-action-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 18px;
+            transform: translateZ(20px);
+        }
+
+        .order-btn {
+            position: relative;
+            background: var(--order-btn-bg);
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 25px;
+            font-family: 'Noto Sans Armenian', sans-serif;
+            font-weight: 700;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 5px 15px rgba(20, 54, 34, 0.25);
+            transition: all 0.3s ease;
+            opacity: 0.8;
+            cursor: not-allowed;
+        }
+
+        .soon-badge {
+            position: absolute;
+            top: -8px;
+            right: -10px;
+            background: #e63946;
+            color: white;
+            font-size: 0.6rem;
+            padding: 3px 8px;
+            border-radius: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 3px 8px rgba(230, 57, 70, 0.4);
+            animation: badgePulse 2s infinite;
+        }
+
+        @keyframes badgePulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
         }
 
         .contacts-section {
-            display: flex; 
-            justify-content: center;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 20px;
-            transform: translateZ(25px);
+            display: flex; justify-content: center; align-items: center;
+            gap: 12px; transform: translateZ(25px);
         }
 
         .btn {
@@ -275,83 +346,13 @@
         .btn-phone { background: linear-gradient(135deg, #143622, #2a5f3f); }
         .btn-whatsapp { background: linear-gradient(135deg, #25D366, #1cb651); }
         .btn-viber { background: linear-gradient(135deg, #7360f2, #5a47de); }
-        .btn-tiktok { background: #000; border: 1px solid rgba(255, 255, 255, 0.1); }
+        .btn-tiktok { background: #000; border: 1px solid rgba(255, 255, 255, 0.2); }
         
-        .btn-listam {
-            background: #0084ff;
-            flex-direction: column;
-        }
+        .btn-listam { background: #0084ff; flex-direction: column; }
+        .btn-text-micro { font-family: 'Montserrat', sans-serif; font-size: 7px; font-weight: 700; margin-top: 1px; letter-spacing: 0.3px; }
 
-        .btn-text-micro {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 7px;
-            font-weight: 700;
-            margin-top: 1px;
-            letter-spacing: 0.3px;
-        }
-
-        /* --- КНОПКА ЗАКАЗА --- */
-        .order-section {
-            display: flex;
-            justify-content: center;
-            transform: translateZ(30px);
-            opacity: 0;
-            animation: slideInFX 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
-            animation-delay: 1.2s;
-        }
-
-        .btn-order {
-            position: relative;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(45deg, var(--primary-green), #2a5f3f);
-            color: white;
-            text-decoration: none;
-            padding: 14px 40px;
-            border-radius: 25px;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            font-size: 0.95rem;
-            box-shadow: 0 8px 20px rgba(20, 54, 34, 0.3);
-            transition: all 0.2s ease;
-            cursor: pointer;
-        }
-
-        .btn-order:active {
-            transform: scale(0.95);
-            box-shadow: 0 4px 10px rgba(20, 54, 34, 0.3);
-        }
-
-        .badge-soon {
-            position: absolute;
-            top: -10px;
-            right: -15px;
-            background: linear-gradient(135deg, #e74c3c, #c0392b);
-            color: white;
-            font-size: 0.65rem;
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-weight: 800;
-            text-transform: uppercase;
-            box-shadow: 0 3px 8px rgba(231, 76, 60, 0.4);
-            animation: pulse-badge 2s infinite;
-            letter-spacing: 1px;
-        }
-
-        @keyframes pulse-badge {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
-
-        .item-appear {
-            animation: slideInFX 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
-        }
-
-        @keyframes slideInFX {
-            to { opacity: 1; transform: translateX(0); }
-        }
+        .item-appear { animation: slideInFX 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) forwards; }
+        @keyframes slideInFX { to { opacity: 1; transform: translateX(0); } }
     </style>
 </head>
 <body>
@@ -359,10 +360,18 @@
     <div class="card" id="businessCard">
         <div class="shine"></div>
         
-        <div class="lang-switcher">
-            <span class="lang-btn active" data-lang="hy">ՀԱՅ</span>
-            <span class="lang-btn" data-lang="ru">РУС</span>
-            <span class="lang-btn" data-lang="en">ENG</span>
+        <div class="controls-container">
+            <div class="theme-switcher">
+                <div class="theme-btn" id="themeToggle" title="Dark/Light Mode">
+                    <i class="fas fa-moon"></i>
+                </div>
+            </div>
+            
+            <div class="lang-switcher">
+                <span class="lang-btn active" data-lang="hy">ՀԱՅ</span>
+                <span class="lang-btn" data-lang="ru">РУС</span>
+                <span class="lang-btn" data-lang="en">ENG</span>
+            </div>
         </div>
         
         <div class="header">
@@ -404,7 +413,7 @@
 
         <div class="services-section">
             <h2 class="section-title" data-i18n="sec_title"> Պրոֆեսիոնալ մոտեցում յուրաքանչյուր աշխատանքին </h2>
-            <h3 data-i18n="services_h3" style="text-align: center; margin-bottom: 10px; font-size: 0.9rem;"> ԾԱՌԱՅՈՒԹՅՈՒՆՆԵՐ </h3>
+            <h3 class="services-h3" data-i18n="services_h3"> ԾԱՌԱՅՈՒԹՅՈՒՆՆԵՐ </h3>
             <div class="service-list">
                 <div class="service-item"><span class="service-name" data-i18n="s1_name">Չափագրում</span><span class="service-price price-free" data-i18n="s1_price">Անվճար</span></div>
                 <div class="service-item"><span class="service-name" data-i18n="s2_name">Միջսենյակային դռների տեղադրում</span><span class="service-price" data-i18n="s2_price">սկսած 13,000 ֏</span></div>
@@ -415,10 +424,18 @@
                 <div class="service-item"><span class="service-name" data-i18n="s7_name">Ջրից և խոնավությունից պաշտպանող նյութերով մշակում</span><span class="service-price" data-i18n="s7_price">սկսած 6,000 ֏</span></div>
                 
                 <div class="service-subheading" data-i18n="subheading">Իրականացնում ենք նաև պլինթուսների տեղադրում և ապամոնտաժում</div>
-                <div class="service-item"><span class="service-name" data-i18n="s8_name">Պլինթուսի տեղադրում (1 գծ.մ.)</span><span class="service-price" data-i18n="s8_price">1,000 - 2,000 ֏</span></div>
+                <div class="service-item"><span class="service-name" data-i18n="s8_name">Պլինթուսի տեղադրում (1 գծ.մ.)</span><span class="service-price" data-i18n="s8_price">սկսած 1,500 ֏</span></div>
                 <div class="service-item"><span class="service-name" data-i18n="s9_name">Պլինթուսի ապամոնտաժում (1 գծ.մ.)</span><span class="service-price" data-i18n="s9_price">300 ֏</span></div>
             </div>
             <p class="info-note" data-i18n="info_note">* Մանրամասների համար կարող եք կապ հաստատել մեզ հետ ձեզ համար հարմար տարբերակով</p>
+        </div>
+
+        <div class="order-action-container">
+            <button class="order-btn" disabled>
+                <i class="fas fa-shopping-cart"></i>
+                <span data-i18n="order_btn">Պատվիրել</span>
+                <div class="soon-badge" data-i18n="order_soon">շուտով</div>
+            </button>
         </div>
 
         <div class="contacts-section">
@@ -436,95 +453,88 @@
             <a href="https://www.tiktok.com/@tree__company" class="btn btn-tiktok" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
         </div>
 
-        <div class="order-section">
-            <a href="#" class="btn-order" onclick="return false;">
-                <span data-i18n="order_btn">Պատվիրել</span>
-                <span class="badge-soon" data-i18n="order_soon">Շուտով</span>
-            </a>
-        </div>
-
     </div>
 
     <script>
         const translations = {
             hy: {
-                title: "TREE COMPANY - Դռների տեղադրում",
-                promo_title: "ՄԵՐ ԱԿՑԻԱՆ",
-                promo_desc: "-10% ԶԵՂՉ ԲՈԼՈՐ ԾԱՌԱՅՈՒԹՅՈՒՆՆԵՐԻՆ Մինչև 25.07.2026թ",
-                sec_title: "Պրոֆեսիոնալ մոտեցում յուրաքանչյուր աշխատանքին",
-                services_h3: "ԾԱՌԱՅՈՒԹՅՈՒՆՆԵՐ",
-                s1_name: "Չափագրում", s1_price: "Անվճար",
-                s2_name: "Միջսենյակային դռների տեղադրում", s2_price: "սկսած 13,000 ֏",
-                s3_name: "Ապամոնտաժում", s3_price: "սկսած 3,500 ֏",
-                s4_name: "Պետլիների փորում (1 հատը)", s4_price: "2,000 ֏",
-                s5_name: "Փականի փորում", s5_price: "5,000 ֏",
-                s6_name: "Երեսկալի և ավելացուցիչի տեղադրում", s6_price: "7,500 ֏",
+                title: "TREE COMPANY - Դռների տեղադրում", promo_title: "ՄԵՐ ԱԿՑԻԱՆ", promo_desc: "-10% ԶԵՂՉ ԲՈԼՈՐ ԾԱՌԱՅՈՒԹՅՈՒՆՆԵՐԻՆ Մինչև 25.07.2026թ",
+                sec_title: "Պրոֆեսիոնալ մոտեցում յուրաքանչյուր աշխատանքին", services_h3: "ԾԱՌԱՅՈՒԹՅՈՒՆՆԵՐ",
+                s1_name: "Չափագրում", s1_price: "Անվճար", s2_name: "Միջսենյակային դռների տեղադրում", s2_price: "սկսած 13,000 ֏",
+                s3_name: "Ապամոնտաժում", s3_price: "սկսած 3,500 ֏", s4_name: "Պետլիների փորում (1 հատը)", s4_price: "2,000 ֏",
+                s5_name: "Փականի փորում", s5_price: "5,000 ֏", s6_name: "Երեսկալի և ավելացուցիչի տեղադրում", s6_price: "7,500 ֏",
                 s7_name: "Ջրից և խոնավությունից պաշտպանող նյութերով մշակում", s7_price: "սկսած 6,000 ֏",
-                subheading: "Իրականացնում ենք նաև պլինթուսների տեղադրում և ապամոնտաժում",
-                s8_name: "Պլինթուսի տեղադրում (1 գծ.մ.)", s8_price: "1,000 - 2,000 ֏",
-                s9_name: "Պլինթուսի ապամոնտաժում (1 գծ.մ.)", s9_price: "300 ֏",
-                info_note: "* Մանրամասների համար կարող եք կապ հաստատել մեզ հետ ձեզ համար հարմար տարբերակով",
-                order_btn: "Պատվիրել",
-                order_soon: "Շուտով"
+                subheading: "Իրականացնում ենք նաև պլինթուսների տեղադրում և ապամոնտաժում", s8_name: "Պլինթուսի տեղադրում (1 գծ.մ.)", s8_price: "սկսած 1,500 ֏",
+                s9_name: "Պլինթուսի ապամոնտաժում (1 գծ.մ.)", s9_price: "300 ֏", info_note: "* Մանրամասների համար կարող եք կապ հաստատել մեզ հետ ձեզ համար հարմար տարբերակով",
+                order_btn: "Պատվիրել", order_soon: "շուտով"
             },
             ru: {
-                title: "TREE COMPANY - Установка дверей",
-                promo_title: "НАША АКЦИЯ",
-                promo_desc: "-10% СКИДКА НА ВСЕ УСЛУГИ до 25.07.2026г",
-                sec_title: "Профессиональный подход к каждой работе",
-                services_h3: "УСЛУГИ",
-                s1_name: "Замер", s1_price: "Бесплатно",
-                s2_name: "Установка межкомнатных дверей", s2_price: "от 13,000 ֏",
-                s3_name: "Демонтаж", s3_price: "от 3,500 ֏",
-                s4_name: "Врезка петель (1 шт.)", s4_price: "2,000 ֏",
-                s5_name: "Врезка замка", s5_price: "5,000 ֏",
-                s6_name: "Установка наличников и доборов", s6_price: "7,500 ֏",
+                title: "TREE COMPANY - Установка дверей", promo_title: "НАША АКЦИЯ", promo_desc: "-10% СКИДКА НА ВСЕ УСЛУГИ до 25.07.2026г",
+                sec_title: "Профессиональный подход к каждой работе", services_h3: "УСЛУГИ",
+                s1_name: "Замер", s1_price: "Бесплатно", s2_name: "Установка межкомнатных дверей", s2_price: "от 13,000 ֏",
+                s3_name: "Демонтаж", s3_price: "от 3,500 ֏", s4_name: "Врезка петель (1 шт.)", s4_price: "2,000 ֏",
+                s5_name: "Врезка замка", s5_price: "5,000 ֏", s6_name: "Установка наличников и доборов", s6_price: "7,500 ֏",
                 s7_name: "Обработка влагозащитными материалами", s7_price: "от 6,000 ֏",
-                subheading: "Также осуществляем установку и демонтаж плинтусов",
-                s8_name: "Установка плинтуса (1 пог.м.)", s8_price: "от 1,000 до 2,000 ֏",
-                s9_name: "Демонтаж плинтуса (1 пог.м.)", s9_price: "300 ֏",
-                info_note: "* Для подробностей можете связаться с нами удобным для вас способом",
-                order_btn: "Оформить заказ",
-                order_soon: "Скоро"
+                subheading: "Также осуществляем установку и демонтаж плинтусов", s8_name: "Установка плинтуса (1 пог.м.)", s8_price: "от 1,500 ֏",
+                s9_name: "Демонтаж плинтуса (1 пог.м.)", s9_price: "300 ֏", info_note: "* Для подробностей можете связаться с нами удобным для вас способом",
+                order_btn: "Оформить заказ", order_soon: "скоро"
             },
             en: {
-                title: "TREE COMPANY - Door Installation",
-                promo_title: "OUR PROMO",
-                promo_desc: "-10% DISCOUNT ON ALL SERVICES until 25.07.2026",
-                sec_title: "Professional approach to every job",
-                services_h3: "SERVICES",
-                s1_name: "Measurement", s1_price: "Free",
-                s2_name: "Interior door installation", s2_price: "from 13,000 ֏",
-                s3_name: "Dismantling", s3_price: "from 3,500 ֏",
-                s4_name: "Hinge routing (1 pc)", s4_price: "2,000 ֏",
-                s5_name: "Lock routing", s5_price: "5,000 ֏",
-                s6_name: "Casing and extension installation", s6_price: "7,500 ֏",
+                title: "TREE COMPANY - Door Installation", promo_title: "OUR PROMO", promo_desc: "-10% DISCOUNT ON ALL SERVICES until 25.07.2026",
+                sec_title: "Professional approach to every job", services_h3: "SERVICES",
+                s1_name: "Measurement", s1_price: "Free", s2_name: "Interior door installation", s2_price: "from 13,000 ֏",
+                s3_name: "Dismantling", s3_price: "from 3,500 ֏", s4_name: "Hinge routing (1 pc)", s4_price: "2,000 ֏",
+                s5_name: "Lock routing", s5_price: "5,000 ֏", s6_name: "Casing and extension installation", s6_price: "7,500 ֏",
                 s7_name: "Waterproofing treatment", s7_price: "from 6,000 ֏",
-                subheading: "We also install and dismantle skirting boards",
-                s8_name: "Skirting board installation (1 lm)", s8_price: "1,000 - 2,000 ֏",
-                s9_name: "Skirting board dismantling (1 lm)", s9_price: "300 ֏",
-                info_note: "* For details, you can contact us in a way convenient for you",
-                order_btn: "Place Order",
-                order_soon: "Soon"
+                subheading: "We also install and dismantle skirting boards", s8_name: "Skirting board installation (1 lm)", s8_price: "from 1,500 ֏",
+                s9_name: "Skirting board dismantling (1 lm)", s9_price: "300 ֏", info_note: "* For details, you can contact us in a way convenient for you",
+                order_btn: "Place an order", order_soon: "soon"
             }
         };
 
         document.addEventListener("DOMContentLoaded", () => {
-            // Логика переключения языков
+            // --- ЛОГИКА ТЕМНОЙ ТЕМЫ ---
+            const themeBtn = document.getElementById('themeToggle');
+            const themeIcon = themeBtn.querySelector('i');
+            const body = document.body;
+            
+            // Проверяем сохраненную тему или настройки системы
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            
+            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+                body.classList.add('dark-theme');
+                themeIcon.classList.replace('fa-moon', 'fa-sun');
+                themeBtn.classList.add('active');
+            }
+
+            themeBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                body.classList.toggle('dark-theme');
+                const isDark = body.classList.contains('dark-theme');
+                
+                if (isDark) {
+                    themeIcon.classList.replace('fa-moon', 'fa-sun');
+                    themeBtn.classList.add('active');
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    themeIcon.classList.replace('fa-sun', 'fa-moon');
+                    themeBtn.classList.remove('active');
+                    localStorage.setItem('theme', 'light');
+                }
+            });
+
+            // --- ЛОГИКА ЯЗЫКОВ ---
             const langBtns = document.querySelectorAll('.lang-btn');
             const i18nElements = document.querySelectorAll('[data-i18n]');
 
             langBtns.forEach(btn => {
                 btn.addEventListener('click', (e) => {
                     e.stopPropagation(); 
-                    
                     langBtns.forEach(b => b.classList.remove('active'));
                     btn.classList.add('active');
-                    
                     const lang = btn.dataset.lang;
-                    
                     document.title = translations[lang].title;
-                    
                     i18nElements.forEach(el => {
                         const key = el.getAttribute('data-i18n');
                         if (translations[lang][key]) {
@@ -534,22 +544,19 @@
                 });
             });
 
-            // Логика отображения скидки (отредактировано: до 25.07.2026 включительно)
+            // --- ЛОГИКА АКЦИИ ---
+            // Жесткая проверка: показывать до 25 Июля 2026 года (включительно)
             const now = new Date();
-            // Месяцы в JS начинаются с 0 (0 = Январь, 6 = Июль)
-            const promoEndDate = new Date(2026, 6, 26); 
-            
+            const promoEndDate = new Date(2026, 6, 26); // Месяцы в JS начинаются с 0, поэтому 6 = Июль. 26, чтобы 25-го еще работало
             if (now < promoEndDate) {
                 document.getElementById('promoBanner').style.display = 'block';
-            } else {
-                document.getElementById('promoBanner').style.display = 'none';
             }
 
+            // --- 3D ЭФФЕКТ ---
             const card = document.getElementById("businessCard");
             const shine = card.querySelector(".shine");
             const logoWrap = document.getElementById("logoWrap");
-            
-            const items = document.querySelectorAll('.service-item, .service-subheading');
+            const items = document.querySelectorAll('.service-item, .service-subheading, .order-action-container');
 
             items.forEach((item, index) => {
                 setTimeout(() => item.classList.add('item-appear'), 300 + index * 90);
@@ -565,7 +572,7 @@
                 card.style.transform = `perspective(1000px) rotateX(${-rotX}deg) rotateY(${rotY}deg) scale(1.02)`;
                 logoWrap.style.transform = `translateZ(35px) translateX(${(px*10)-5}px) translateY(${(py*10)-5}px)`;
                 shine.style.opacity = "1";
-                shine.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(255,255,255,0.4) 0%, transparent 60%)`;
+                shine.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(255,255,255,0.2) 0%, transparent 60%)`;
             }
 
             const reset = () => {
